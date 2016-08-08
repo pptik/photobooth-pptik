@@ -1,0 +1,24 @@
+﻿<metro:MetroWindow x:Class="Photobooth_PPTIK.MainWindow" x:Name="main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Photobooth_PPTIK"
+        mc:Ignorable="d"
+        Title="Photobooth 1.0" 
+        WindowTitleBrush="Gray"
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Icon="Resources/logo/PPTIK-logo.png" 
+        Loaded="MetroWindow_Loaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="600" ResizeMode="NoResize" Topmost="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" Cursor="Hand">
+
+    <Grid Margin="10 0 10 0">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" HorizontalAlignment="Center">
+            <Frame Grid.Row="0" Name="frame" NavigationUIVisibility="Hidden" Background="Azure"></Frame>
+        </Viewbox>
+        
+    </Grid>
+</metro:MetroWindow>
+    

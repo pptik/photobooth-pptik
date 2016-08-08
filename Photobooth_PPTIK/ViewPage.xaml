@@ -1,0 +1,35 @@
+﻿<Page x:Name="page" x:Class="Photobooth_PPTIK.ViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Photobooth_PPTIK"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="ViewPage" Width="600" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=page, Mode=OneWay}" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=page, Mode=OneWay}" 
+                    Panel.ZIndex="1">
+            <Image x:Name="result" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" ></Image>
+        </Canvas>
+        <Button x:Name="BackBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Content="" Height="40" Width="120" Click="BackBtn_Click" VerticalAlignment="top" BorderThickness="0" HorizontalAlignment="Left" Margin="10,10,0,0">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Icon/Start-03.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="shareBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Click="shareBtn_Click" Height="40" Width="120" VerticalAlignment="Top" BorderThickness="0" HorizontalAlignment="Right" Margin="0,10,10,0">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Icon/Share-03.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>
