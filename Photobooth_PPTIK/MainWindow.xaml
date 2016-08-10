@@ -11,12 +11,12 @@
         Icon="Resources/logo/PPTIK-logo.png" 
         Loaded="MetroWindow_Loaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="600" ResizeMode="NoResize" Topmost="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" Cursor="Hand">
 
-    <Grid Margin="10 0 10 0">
+    <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="0" HorizontalAlignment="Center">
-            <Frame Grid.Row="0" Name="frame" NavigationUIVisibility="Hidden" Background="Azure"></Frame>
+            <Frame Grid.Row="0" Name="frame" NavigationUIVisibility="Hidden" Background="Azure" HorizontalAlignment="Center" VerticalAlignment="Center"></Frame>
         </Viewbox>
         
     </Grid>

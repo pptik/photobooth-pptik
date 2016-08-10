@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using LightBuzz.Vitruvius;
-using Microsoft.Kinect;
-using Microsoft.Kinect.Wpf.Controls;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Windows.Media.Animation;
 using System.IO;
-using System.Diagnostics;
-using Photobooth_PPTIK.Helper;
+using AForge.Video;
+using AForge.Video.DirectShow;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Threading;
 
 namespace Photobooth_PPTIK
 {
@@ -19,8 +19,8 @@ namespace Photobooth_PPTIK
     /// </summary>
     public partial class CapturePage : Page
     {
-        private KinectSensor _sensor;
-        private MultiSourceFrameReader _reader;
+        public FilterInfoCollection CamsCollection;
+        public VideoCaptureDevice Cam = null;
 
         private int currentElement = 0;
         private DispatcherTimer _timer;
@@ -57,15 +57,13 @@ namespace Photobooth_PPTIK
 
         private void OnLoaded(object sender, RoutedEventArgs args)
         {
-            _sensor = KinectSensor.GetDefault();
+            CamsCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
-            if (_sensor != null)
-            {
-                _sensor.Open();
-                _reader = _sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color | FrameSourceTypes.Body | FrameSourceTypes.Depth);
-                _reader.MultiSourceFrameArrived += Reader_MultiSourceFrameArrived;
-            }
+            Cam = new VideoCaptureDevice(CamsCollection[0].MonikerString);
+            Cam.NewFrame += new NewFrameEventHandler(Cam_NewFrame);
+            Cam.Start();
         }
+
 
         private void SwipeLeft()
         {
@@ -97,23 +95,30 @@ namespace Photobooth_PPTIK
             storyboard.Begin();
         }
 
-        void Reader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
+        void Cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            var reference = e.FrameReference.AcquireFrame();
 
-            // Color
-            using (var frame = reference.ColorFrameReference.AcquireFrame())
+            System.Drawing.Image imgforms = (Bitmap)eventArgs.Frame.Clone();
+
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+
+            MemoryStream ms = new MemoryStream();
+            imgforms.Save(ms, ImageFormat.Bmp);
+            ms.Seek(0, SeekOrigin.Begin);
+
+            bi.StreamSource = ms;
+            bi.EndInit();
+
+            
+            bi.Freeze();
+
+            Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
-                if (frame != null)
-                {
-                    if (viewer.Visualization == Visualization.Color)
-                    {
-                        viewer.Image = frame.ToBitmap();
-                    }
-                }
-            }
-
+                viewer.Source = bi; /*frameholder is the name of the 'Image' WPF control*/
+            }));
         }
+         
 
         private void CaptureBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -187,16 +192,7 @@ namespace Photobooth_PPTIK
 
         private void page_Unloaded_1(object sender, RoutedEventArgs e)
         {
-
-            if (_reader != null)
-            {
-                _reader.Dispose();
-            }
-
-            if (_sensor != null)
-            {
-                _sensor.Close();
-            }
+            Cam.Stop();
         }
     }
 }

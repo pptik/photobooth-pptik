@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Photobooth_PPTIK"
-      xmlns:kinect="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
       Title="CapturePage" Unloaded="page_Unloaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="600">
 
@@ -21,8 +20,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600
-                              " />
+            <ColumnDefinition Width="600" />
         </Grid.ColumnDefinitions>
 
         <Button x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="0" Margin="10,358,0,0" Height="70" Width="70" VerticalAlignment="Top" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
@@ -54,16 +52,16 @@
                 <Image x:Name="frame4" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" />
 
             </StackPanel>
-            <kinect:KinectViewer Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="{Binding ActualHeight, ElementName=page, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=page, Mode=OneWay}" RenderTransformOrigin="0.5,0.5" BorderThickness="0">
-                <kinect:KinectViewer.RenderTransform>
+            <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="{Binding ActualHeight, ElementName=page, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=page, Mode=OneWay}" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="90"/>
-                        <TranslateTransform Y="84" X="-70"/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform Y="84" X="-82"/>
                     </TransformGroup>
-                </kinect:KinectViewer.RenderTransform>
-            </kinect:KinectViewer>
+                </Image.RenderTransform>
+            </Image>
         </Canvas>
     </Grid>
 </Page>

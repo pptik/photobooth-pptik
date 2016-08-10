@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Kinect;
+using Microsoft.Kinect.Wpf.Controls;
 
 namespace Photobooth_PPTIK.Pages
 {
@@ -27,7 +29,6 @@ namespace Photobooth_PPTIK.Pages
         {
             this.InitializeComponent();
             this.path = path;
-            EmailTextBox.Focus();
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -38,7 +39,7 @@ namespace Photobooth_PPTIK.Pages
                 //put your SMTP address and port here.
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 //Put the email address
-                mail.From = new MailAddress("yours");
+                mail.From = new MailAddress("souleater9992@gmail.com");
                 //Put the email where you want to send.
                 String sendTo = EmailTextBox.Text;
                 mail.To.Add(sendTo);
@@ -59,7 +60,7 @@ namespace Photobooth_PPTIK.Pages
                 mail.Attachments.Add(attachment);
 
                 //Your username and password!
-                SmtpServer.Credentials = new System.Net.NetworkCredential("yours", "yours");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("souleater9992@gmail.com", "Souleater999");
                 //Set Smtp Server port
                 SmtpServer.Port = 587;
                 SmtpServer.EnableSsl = true;

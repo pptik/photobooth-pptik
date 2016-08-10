@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Windows;
-using Microsoft.Kinect;
-using Microsoft.Kinect.Wpf.Controls;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using LightBuzz.Vitruvius;
-using System.Linq;
 using RestSharp;
 using Photobooth_PPTIK.Pages;
 
