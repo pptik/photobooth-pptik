@@ -46,12 +46,17 @@ namespace Photobooth_PPTIK
        
             var uriSource1 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_1.png", UriKind.Relative);
             var uriSource2 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_2.png", UriKind.Relative);
+            var uriSource3 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_3.png", UriKind.Relative);
+            var uriSource4 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_4.png", UriKind.Relative);
+            var uriSource5 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_5.png", UriKind.Relative);
 
-            nFrame = 4; //jumlah frame
+
+            nFrame = 5; //jumlah frame
             frame1.Source = new BitmapImage(uriSource1);
             frame2.Source = new BitmapImage(uriSource2);
-            frame3.Source = new BitmapImage(uriSource1);
-            frame4.Source = new BitmapImage(uriSource2);
+            frame3.Source = new BitmapImage(uriSource3);
+            frame4.Source = new BitmapImage(uriSource4);
+            frame5.Source = new BitmapImage(uriSource5);
 
         }
 
@@ -115,7 +120,7 @@ namespace Photobooth_PPTIK
 
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
-                viewer.Source = bi; /*frameholder is the name of the 'Image' WPF control*/
+                viewer.Source = bi; 
             }));
         }
          

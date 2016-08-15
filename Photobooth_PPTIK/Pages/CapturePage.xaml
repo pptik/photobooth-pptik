@@ -46,10 +46,11 @@
                 <StackPanel.RenderTransform>
                     <TranslateTransform x:Name="CarouselTransform" />
                 </StackPanel.RenderTransform>
-                <Image x:Name="frame1" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" />
-                <Image x:Name="frame2" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" />
-                <Image x:Name="frame3" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" />
-                <Image x:Name="frame4" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" />
+                <Image x:Name="frame1" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
+                <Image x:Name="frame2" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
+                <Image x:Name="frame3" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
+                <Image x:Name="frame4" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
+                <Image x:Name="frame5" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
 
             </StackPanel>
             <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="{Binding ActualHeight, ElementName=page, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=page, Mode=OneWay}" RenderTransformOrigin="0.5,0.5">
