@@ -1,0 +1,15 @@
+﻿{
+  "frames": {
+    "files": [
+      "frame_1.png",
+      "frame_2.png",
+      "frame_3.png",
+      "frame_4.png",
+      "frame_5.png"
+    ]
+  },
+  "resolution": {
+    "width": 768,
+    "height": 0
+  }
+}

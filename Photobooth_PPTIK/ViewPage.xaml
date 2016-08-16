@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Photobooth_PPTIK"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="ViewPage" Width="600" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}">
+      Title="ViewPage" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,10 +16,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-
         <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=page, Mode=OneWay}" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=page, Mode=OneWay}" 
                     Panel.ZIndex="1">
-            <Image x:Name="result" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" ></Image>
+            <Image x:Name="result" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" ></Image>
         </Canvas>
         <Button x:Name="BackBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Content="" Height="40" Width="120" Click="BackBtn_Click" VerticalAlignment="top" BorderThickness="0" HorizontalAlignment="Left" Margin="10,10,0,0">
             <Button.Background>

@@ -11,6 +11,7 @@ using AForge.Video.DirectShow;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace Photobooth_PPTIK
 {
@@ -26,7 +27,10 @@ namespace Photobooth_PPTIK
         private DispatcherTimer _timer;
         private TimeSpan _time;
         private int nFrame = 0;
+        private int configWidth = 0;
 
+        private Uri[] uriSource;
+     
         //number
         private Uri[] numbers = {
            new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-0.png", UriKind.Relative),
@@ -43,20 +47,52 @@ namespace Photobooth_PPTIK
             this.InitializeComponent();
             this.Loaded += OnLoaded;
             _time = TimeSpan.FromSeconds(5);
-       
-            var uriSource1 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_1.png", UriKind.Relative);
-            var uriSource2 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_2.png", UriKind.Relative);
-            var uriSource3 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_3.png", UriKind.Relative);
-            var uriSource4 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_4.png", UriKind.Relative);
-            var uriSource5 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_5.png", UriKind.Relative);
 
+            ConfigSettings config = new ConfigSettings();
+            string configPath = @"" + Directory.GetCurrentDirectory() + "/config.json";
+            using (StreamReader file = File.OpenText("config.json"))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                config = serializer.Deserialize<ConfigSettings>(reader);
+                configWidth = config.resolution.width;
+                var frames = config.frames.files;
+                nFrame = frames.Count();
+                uriSource = new Uri[nFrame];
+                for (int i = 0; i < frames.Count(); i++)
+                {
+                    uriSource[i] = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/"+frames[i], UriKind.Relative);
 
-            nFrame = 5; //jumlah frame
-            frame1.Source = new BitmapImage(uriSource1);
-            frame2.Source = new BitmapImage(uriSource2);
-            frame3.Source = new BitmapImage(uriSource3);
-            frame4.Source = new BitmapImage(uriSource4);
-            frame5.Source = new BitmapImage(uriSource5);
+                    System.Windows.Controls.Image frame = new System.Windows.Controls.Image();
+                    frame.Source = new BitmapImage(uriSource[i]);
+                    frame.Margin = new Thickness(0);
+                    frame.Stretch = System.Windows.Media.Stretch.Fill;
+                                        
+                    var bindActualWidth = new System.Windows.Data.Binding("ActualWidth");
+                    bindActualWidth.ElementName = "canvas";
+                    bindActualWidth.Mode = System.Windows.Data.BindingMode.OneWay;
+                    frame.SetBinding(System.Windows.Controls.Image.WidthProperty, bindActualWidth);
+
+                    var bindActualHeight= new System.Windows.Data.Binding("ActualHeight");
+                    bindActualHeight.ElementName = "canvas";
+                    bindActualHeight.Mode = System.Windows.Data.BindingMode.OneWay;
+                    frame.SetBinding(System.Windows.Controls.Image.HeightProperty, bindActualHeight);
+
+                    Carousel.Children.Add(frame);
+                }
+
+                //var uriSource1 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_1.png", UriKind.Relative);
+                //var uriSource2 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_2.png", UriKind.Relative);
+                //var uriSource3 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_3.png", UriKind.Relative);
+                //var uriSource4 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_4.png", UriKind.Relative);
+                //var uriSource5 = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/frame_5.png", UriKind.Relative);
+                
+                //frame1.Source = new BitmapImage(uriSource[0]);
+                //frame2.Source = new BitmapImage(uriSource[1]);
+                //frame3.Source = new BitmapImage(uriSource[2]);
+                //frame4.Source = new BitmapImage(uriSource[3]);
+                //frame5.Source = new BitmapImage(uriSource[4]);
+            }          
 
         }
 
@@ -91,7 +127,7 @@ namespace Photobooth_PPTIK
         private void AnimateCarousel()
         {
             //var gapValue = 1024; //sesuaikan dengan lebar/width aplikasi
-            var gapValue = 600;
+            var gapValue = this.configWidth;
             Canvas c = this.Resources["canvas"] as Canvas;
             Storyboard storyboard = (this.Resources["CarouselStoryboard"] as Storyboard);
             DoubleAnimation animation = storyboard.Children.First() as DoubleAnimation;

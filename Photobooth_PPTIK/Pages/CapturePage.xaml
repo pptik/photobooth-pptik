@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Photobooth_PPTIK"
       mc:Ignorable="d" 
-      Title="CapturePage" Unloaded="page_Unloaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="600">
+      Title="CapturePage" Unloaded="page_Unloaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}">
 
     <Page.Resources>
         <Storyboard x:Key="CarouselStoryboard">
@@ -20,48 +20,49 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600" />
+            <ColumnDefinition Width="0" />
+            <ColumnDefinition Width="768"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="0" Margin="10,358,0,0" Height="70" Width="70" VerticalAlignment="Top" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+        <Button x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="1" Margin="2,477,0,477" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="71">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-02.png" Stretch="Uniform" />
             </Button.Background>
         </Button>
-        <Button x:Name="rightBtn" Click="Right_Click" Grid.Row="0" Grid.Column="0" Margin="520,358,10,0" Height="70" Width="70" VerticalAlignment="Top" Panel.ZIndex="2" BorderBrush="{x:Null}">
+        <Button x:Name="rightBtn" Click="Right_Click" Grid.Row="0" Grid.Column="1" Margin="0,477,10,477" Panel.ZIndex="2" BorderBrush="{x:Null}" Width="71" HorizontalAlignment="Right">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-01.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="CaptureBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0">
+        <Button x:Name="CaptureBtn" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-10.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Image x:Name="countImage" Grid.Row="0" Grid.Column="0" Panel.ZIndex="4" Width="200" Height="200" Margin="0"/>
+        <Image x:Name="countImage" Grid.Row="0" Grid.Column="1" Panel.ZIndex="4" Margin="297,476,215,476"/>
 
-        <Canvas x:Name="canvas" Width="{Binding ActualWidth, ElementName=page, Mode=OneWay}" 
-                    Panel.ZIndex="1" Height="{Binding ActualHeight, ElementName=page, Mode=OneWay}" RenderTransformOrigin="0.5,0.5">
+        <Canvas x:Name="canvas" 
+                    Panel.ZIndex="1" Grid.ColumnSpan="2" Background="Black">
             <StackPanel Name="Carousel" Orientation="Horizontal" Panel.ZIndex="2">
                 <StackPanel.RenderTransform>
                     <TranslateTransform x:Name="CarouselTransform" />
                 </StackPanel.RenderTransform>
-                <Image x:Name="frame1" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
+                <!--<Image x:Name="frame1" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
                 <Image x:Name="frame2" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
                 <Image x:Name="frame3" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
                 <Image x:Name="frame4" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
-                <Image x:Name="frame5" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />
+                <Image x:Name="frame5" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />-->
 
             </StackPanel>
-            <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="{Binding ActualHeight, ElementName=page, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=page, Mode=OneWay}" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
+            <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0,128,0,0" Width="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}">
+                <Image.LayoutTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
                         <RotateTransform Angle="-90"/>
-                        <TranslateTransform Y="84" X="-82"/>
+                        <TranslateTransform/>
                     </TransformGroup>
-                </Image.RenderTransform>
+                </Image.LayoutTransform>
             </Image>
         </Canvas>
     </Grid>

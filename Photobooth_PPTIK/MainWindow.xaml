@@ -9,7 +9,7 @@
         WindowTitleBrush="Gray"
         xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Icon="Resources/logo/PPTIK-logo.png" 
-        Loaded="MetroWindow_Loaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="600" ResizeMode="NoResize" Topmost="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" Cursor="Hand">
+        Loaded="MetroWindow_Loaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" ResizeMode="NoResize" Topmost="True" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" Cursor="Hand">
 
     <Grid Margin="0">
         <Grid.RowDefinitions>
