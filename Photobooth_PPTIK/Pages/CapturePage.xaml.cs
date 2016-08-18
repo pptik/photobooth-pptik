@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
 using Newtonsoft.Json;
+using System.Windows.Input;
 
 namespace Photobooth_PPTIK
 {
@@ -40,7 +41,9 @@ namespace Photobooth_PPTIK
            new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-4.png", UriKind.Relative),
            new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-5.png", UriKind.Relative)
         };
-       
+
+        private bool Triger = true;
+
 
         public CapturePage()
         {
@@ -62,6 +65,7 @@ namespace Photobooth_PPTIK
                 for (int i = 0; i < frames.Count(); i++)
                 {
                     uriSource[i] = new Uri(@"/Photobooth_PPTIK;component/Resources/Frame/"+frames[i], UriKind.Relative);
+                    Console.WriteLine("path "+uriSource[i]);
 
                     System.Windows.Controls.Image frame = new System.Windows.Controls.Image();
                     frame.Source = new BitmapImage(uriSource[i]);
@@ -234,6 +238,30 @@ namespace Photobooth_PPTIK
         private void page_Unloaded_1(object sender, RoutedEventArgs e)
         {
             Cam.Stop();
+        }
+
+        private void page_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Right && Triger)
+            {
+                SwipeLeft();
+                Triger = false;
+            }
+            else if (e.Key == Key.Left && Triger)
+            {
+                SwipeRight();
+                Triger = false;
+            }
+            else if (e.Key == Key.B && Triger)
+            {
+                Capture();
+                Triger = false;
+            }
+        }
+
+        private void page_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Triger = true;
         }
     }
 }

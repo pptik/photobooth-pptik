@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Photobooth_PPTIK"
       mc:Ignorable="d" 
-      Title="CapturePage" Unloaded="page_Unloaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}">
+      Title="CapturePage" Unloaded="page_Unloaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" KeyDown="page_KeyDown" KeyUp="page_KeyUp">
 
     <Page.Resources>
         <Storyboard x:Key="CarouselStoryboard">
@@ -24,17 +24,17 @@
             <ColumnDefinition Width="768"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="1" Margin="2,477,0,477" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="71">
+        <Button x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="1" Margin="2,477,0,477" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="71" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-02.png" Stretch="Uniform" />
             </Button.Background>
         </Button>
-        <Button x:Name="rightBtn" Click="Right_Click" Grid.Row="0" Grid.Column="1" Margin="0,477,10,477" Panel.ZIndex="2" BorderBrush="{x:Null}" Width="71" HorizontalAlignment="Right">
+        <Button x:Name="rightBtn" Click="Right_Click" Grid.Row="0" Grid.Column="1" Margin="0,477,10,477" Panel.ZIndex="2" BorderBrush="{x:Null}" Width="71" HorizontalAlignment="Right" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-01.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="CaptureBtn" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462">
+        <Button x:Name="CaptureBtn" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-10.png" Stretch="Uniform"/>
             </Button.Background>
@@ -54,7 +54,7 @@
                 <Image x:Name="frame5" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />-->
 
             </StackPanel>
-            <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0,128,0,0" Width="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}">
+            <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}">
                 <Image.LayoutTransform>
                     <TransformGroup>
                         <ScaleTransform/>

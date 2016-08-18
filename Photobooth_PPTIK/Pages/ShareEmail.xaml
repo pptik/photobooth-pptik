@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Photobooth_PPTIK.Pages"
       mc:Ignorable="d"
       xmlns:WpfKb="clr-namespace:WpfKb.Controls;assembly=WpfKb"
-      Title="ShareEmail" Width="600" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}"
+      Title="ShareEmail" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}"
       x:Name="shareEmail">
 
     <Grid Margin="0,10,0,0">
