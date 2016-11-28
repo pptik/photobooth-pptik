@@ -47,6 +47,7 @@ namespace Photobooth_PPTIK
 
         public CapturePage()
         {
+            
             this.InitializeComponent();
             this.Loaded += OnLoaded;
             _time = TimeSpan.FromSeconds(5);
@@ -240,28 +241,28 @@ namespace Photobooth_PPTIK
             Cam.Stop();
         }
 
-        private void page_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == Key.Right && Triger)
-            {
-                SwipeLeft();
-                Triger = false;
-            }
-            else if (e.Key == Key.Left && Triger)
-            {
-                SwipeRight();
-                Triger = false;
-            }
-            else if (e.Key == Key.B && Triger)
-            {
-                Capture();
-                Triger = false;
-            }
-        }
+    //    private void page_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    //    {
+    //        if (e.Key == Key.Right && Triger)
+    //        {
+    //            SwipeLeft();
+    //            Triger = false;
+    //        }
+    //        else if (e.Key == Key.Left && Triger)
+    //        {
+    //            SwipeRight();
+    //            Triger = false;
+    //        }
+    //        else if (e.Key == Key.B && Triger)
+    //        {
+    //            Capture();
+    //            Triger = false;
+    //        }
+    //    }
 
-        private void page_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            Triger = true;
-        }
+    //    private void page_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+    //    {
+    //        Triger = true;
+    //    }
     }
 }

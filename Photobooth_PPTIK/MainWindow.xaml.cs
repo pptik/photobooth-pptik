@@ -10,6 +10,7 @@ namespace Photobooth_PPTIK
     {
         public MainWindow()
         {
+           
             InitializeComponent();
         }
 
