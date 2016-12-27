@@ -11,5 +11,11 @@
   "resolution": {
     "width": 768,
     "height": 0
-  }
+  },
+  "smtp": {
+    "email": "yours",
+    "password": "yours",
+    "emailSubject": "BPG Bandung - Photo Booth PPTIK",
+    "msgBody": ""
+  } 
 }

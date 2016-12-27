@@ -10,6 +10,7 @@ namespace Photobooth_PPTIK
     {
         public Frames frames { get; set; }
         public Resolution resolution { get; set; }
+        public Smtp smtp { get; set; }
     }
 
     public class Resolution
@@ -21,5 +22,14 @@ namespace Photobooth_PPTIK
     public class Frames
     {
         public string[] files { get; set; }
+    }
+
+    public class Smtp
+    {
+        public string email { get; set; }
+        public string password { get; set; }
+
+        public string msgBody { get; set; }
+        public string emailSubject { get; set; }
     }
 }

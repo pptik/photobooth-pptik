@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -21,13 +23,30 @@ namespace Photobooth_PPTIK.Pages
     /// </summary>
     public partial class ShareEmail : Page
     {
+        private string emailSubject;
+        private string msgBody;
         private string path;
+        private string pswd;
+        private string senderEmail;
 
         public ShareEmail(string path)
         {
             this.InitializeComponent();
             this.path = path;
             EmailTextBox.Focus();
+            ConfigSettings config = new ConfigSettings();
+            string configPath = @"" + Directory.GetCurrentDirectory() + "/config.json";
+            using (StreamReader file = File.OpenText("config.json"))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                config = serializer.Deserialize<ConfigSettings>(reader);
+
+                senderEmail = config.smtp.email;
+                pswd = config.smtp.password;
+                emailSubject = config.smtp.emailSubject;
+                msgBody = config.smtp.msgBody;
+            }
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -38,17 +57,17 @@ namespace Photobooth_PPTIK.Pages
                 //put your SMTP address and port here.
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 //Put the email address
-                mail.From = new MailAddress("yours");
+                mail.From = new MailAddress(senderEmail);
                 //Put the email where you want to send.
                 String sendTo = EmailTextBox.Text;
                 mail.To.Add(sendTo);
 
-                mail.Subject = "BPG Bandung - Photo Booth PPTIK";
+                mail.Subject = emailSubject;
 
                 StringBuilder sbBody = new StringBuilder();
-
+                sbBody.AppendLine(msgBody);
+                sbBody.AppendLine("");
                 sbBody.AppendLine("Thank you,");
-
                 sbBody.AppendLine("PPTIK ITB");
                 mail.Body = sbBody.ToString();
 
@@ -59,7 +78,7 @@ namespace Photobooth_PPTIK.Pages
                 mail.Attachments.Add(attachment);
 
                 //Your username and password!
-                SmtpServer.Credentials = new System.Net.NetworkCredential("yours", "yours");
+                SmtpServer.Credentials = new System.Net.NetworkCredential(senderEmail, pswd);
                 //Set Smtp Server port
                 SmtpServer.Port = 587;
                 SmtpServer.EnableSsl = true;
