@@ -62,7 +62,7 @@ namespace Photobooth_PPTIK
 
             //var request = new RestRequest(APIpostFoto, Method.POST);
             //request.AddParameter("path", this.path); // adds to POST or URL querystring based on Method
-            //                                        //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+            //                                         //request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
 
             //// easily add HTTP Headers
             ////request.AddHeader("header", "value");

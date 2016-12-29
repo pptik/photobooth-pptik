@@ -83,12 +83,22 @@ namespace Photobooth_PPTIK.Pages
                 SmtpServer.Port = 587;
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-                MessageBox.Show("The email has been sent! :)");
+                MessageBox.Show("Terkirim :)");
+
+                var page = new CapturePage();
+                this.NavigationService.Navigate(page);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                 MessageBox.Show("Ulangi Beberapa Saat Lagi");
             }
+        }
+
+        private void btnTake_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new CapturePage();
+            this.NavigationService.Navigate(page);
         }
     }
 }
