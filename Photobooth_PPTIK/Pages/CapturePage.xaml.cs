@@ -39,7 +39,12 @@ namespace Photobooth_PPTIK
            new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-2.png", UriKind.Relative),
            new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-3.png", UriKind.Relative),
            new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-4.png", UriKind.Relative),
-           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-5.png", UriKind.Relative)
+           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-5.png", UriKind.Relative),
+           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-6.png", UriKind.Relative),
+           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-7.png", UriKind.Relative),
+           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-8.png", UriKind.Relative),
+           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-9.png", UriKind.Relative),
+           new Uri(@"/Photobooth_PPTIK;component/Resources/Icon/number-10.png", UriKind.Relative),
         };
 
         private bool Triger = true;
@@ -50,7 +55,8 @@ namespace Photobooth_PPTIK
             
             this.InitializeComponent();
             this.Loaded += OnLoaded;
-            _time = TimeSpan.FromSeconds(5);
+            _time = TimeSpan.FromSeconds(10);
+            page.Focus();
 
             ConfigSettings config = new ConfigSettings();
             string configPath = @"" + Directory.GetCurrentDirectory() + "/config.json";
@@ -182,7 +188,7 @@ namespace Photobooth_PPTIK
                 if (_time.Seconds == 0)
                 {
                     _timer.Stop();
-                    _time = TimeSpan.FromSeconds(6);
+                    _time = TimeSpan.FromSeconds(11);
                     countImage.Visibility = Visibility.Hidden;
                     SavePhoto();
                 }
@@ -236,33 +242,33 @@ namespace Photobooth_PPTIK
 
         }
 
-        private void page_Unloaded_1(object sender, RoutedEventArgs e)
+        private void page_Unloaded(object sender, RoutedEventArgs e)
         {
             Cam.Stop();
         }
 
-    //    private void page_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-    //    {
-    //        if (e.Key == Key.Right && Triger)
-    //        {
-    //            SwipeLeft();
-    //            Triger = false;
-    //        }
-    //        else if (e.Key == Key.Left && Triger)
-    //        {
-    //            SwipeRight();
-    //            Triger = false;
-    //        }
-    //        else if (e.Key == Key.B && Triger)
-    //        {
-    //            Capture();
-    //            Triger = false;
-    //        }
-    //    }
+        private void page_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Right && Triger)
+            {
+                SwipeLeft();
+                Triger = false;
+            }
+            else if (e.Key == Key.Left && Triger)
+            {
+                SwipeRight();
+                Triger = false;
+            }
+            else if (e.Key == Key.B && Triger)
+            {
+                Capture();
+                Triger = false;
+            }
+        }
 
-    //    private void page_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-    //    {
-    //        Triger = true;
-    //    }
+        private void page_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Triger = true;
+        }
     }
 }

@@ -5,18 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Photobooth_PPTIK"
       mc:Ignorable="d" 
-      
-      Title="CapturePage" Unloaded="page_Unloaded_1" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}">
+      Title="CapturePage" Unloaded="page_Unloaded" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" 
+      Focusable="True"
+      KeyDown="page_KeyDown" 
+      KeyUp="page_KeyUp">
 
     <Page.Resources>
-        <Storyboard x:Key="CarouselStoryboard">
+        <Storyboard x:Key="CarouselStoryboard" >
             <DoubleAnimation
                 Storyboard.TargetName="CarouselTransform"
                 Storyboard.TargetProperty="X"/>
         </Storyboard>
     </Page.Resources>
 
-    <Grid>
+    <Grid Name="grid" Focusable="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -25,27 +27,26 @@
             <ColumnDefinition Width="768"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="1" Margin="2,477,0,477" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.704,3.438" HorizontalAlignment="Left" Width="71" Cursor="None">
+        <Button Focusable="False" IsTabStop="True" x:Name="leftBtn" Click="Left_Click" Grid.Row="0" Grid.Column="1" Margin="2,477,0,477" Panel.ZIndex="2" BorderBrush="{x:Null}" RenderTransformOrigin="0.704,3.438" HorizontalAlignment="Left" Width="71" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-02.png" Stretch="Uniform" />
             </Button.Background>
         </Button>
-        <Button x:Name="rightBtn" Click="Right_Click" Grid.Row="0" Grid.Column="1" Margin="0,477,10,477" Panel.ZIndex="2" BorderBrush="{x:Null}" Width="71" HorizontalAlignment="Right" Cursor="None">
+        <Button Focusable="False" IsTabStop="True" x:Name="rightBtn" Click="Right_Click" Grid.Row="0" Grid.Column="1" Margin="0,477,10,477" Panel.ZIndex="2" BorderBrush="{x:Null}" Width="71" HorizontalAlignment="Right" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-01.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="CaptureBtn" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462" Cursor="None">
+        <Button x:Name="CaptureBtn" Focusable="False" IsTabStop="True" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-10.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Image x:Name="countImage" Grid.Row="0" Grid.Column="1" Panel.ZIndex="4" Margin="297,476,215,476"/>
+        <Image Focusable="False" x:Name="countImage" Grid.Row="0" Grid.Column="1" Panel.ZIndex="4" Margin="297,476,215,476"/>
 
-        <Canvas x:Name="canvas" 
-                    
+        <Canvas Focusable="False" x:Name="canvas" 
                 Panel.ZIndex="1" Grid.ColumnSpan="2" Background="Black" Height="1356" VerticalAlignment="Top" Margin="0,0,0,-330">
-            <StackPanel Name="Carousel" Orientation="Horizontal" Panel.ZIndex="2">
+            <StackPanel Focusable="False" Name="Carousel" Orientation="Horizontal" Panel.ZIndex="2">
                 <StackPanel.RenderTransform>
                     <TranslateTransform x:Name="CarouselTransform" />
                 </StackPanel.RenderTransform>
@@ -56,7 +57,7 @@
                 <Image x:Name="frame5" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" />-->
 
             </StackPanel>
-            <Image Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="1367" Height="917" Canvas.Top="163" Canvas.Left="-88" RenderTransformOrigin="0.5,0.5">
+            <Image Focusable="False" Grid.Row="0" Grid.Column="0" x:Name="viewer" Panel.ZIndex="1" Margin="0" Width="1367" Height="917" Canvas.Top="163" Canvas.Left="-88" RenderTransformOrigin="0.5,0.5">
                 <Image.LayoutTransform>
                     <TransformGroup>
                         <ScaleTransform/>
