@@ -56,7 +56,7 @@ namespace Photobooth_PPTIK
             this.InitializeComponent();
             this.Loaded += OnLoaded;
             _time = TimeSpan.FromSeconds(10);
-            page.Focus();
+            CaptureBtn.Focus();
 
             ConfigSettings config = new ConfigSettings();
             string configPath = @"" + Directory.GetCurrentDirectory() + "/config.json";
@@ -259,7 +259,7 @@ namespace Photobooth_PPTIK
                 SwipeRight();
                 Triger = false;
             }
-            else if (e.Key == Key.B && Triger)
+            else if (e.Key == Key.Enter && Triger)
             {
                 Capture();
                 Triger = false;

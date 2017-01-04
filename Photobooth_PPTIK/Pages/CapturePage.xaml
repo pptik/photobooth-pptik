@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Photobooth_PPTIK"
       mc:Ignorable="d" 
       Title="CapturePage" Unloaded="page_Unloaded" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" 
-      Focusable="True"
+      Focusable="False"
       KeyDown="page_KeyDown" 
       KeyUp="page_KeyUp">
 
@@ -37,7 +37,7 @@
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-01.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="CaptureBtn" Focusable="False" IsTabStop="True" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462" Cursor="None">
+        <Button x:Name="CaptureBtn" IsTabStop="True" Grid.Row="0" Grid.Column="1" Panel.ZIndex="2" Height="100" Width="100" Click="CaptureBtn_Click"  VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Margin="308,462,360,462" Cursor="None">
             <Button.Background>
                 <ImageBrush ImageSource="/Photobooth_PPTIK;component/Resources/Icon/Button-10.png" Stretch="Uniform"/>
             </Button.Background>

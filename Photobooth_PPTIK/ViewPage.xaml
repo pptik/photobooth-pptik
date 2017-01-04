@@ -20,12 +20,12 @@
                     Panel.ZIndex="1">
             <Image x:Name="result" Width="{Binding ActualWidth, ElementName=canvas, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=canvas, Mode=OneWay}" Margin="0" Stretch="Fill" ></Image>
         </Canvas>
-        <Button x:Name="BackBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Content="" Height="40" Width="120" Click="BackBtn_Click" VerticalAlignment="top" BorderThickness="0" HorizontalAlignment="Left" Margin="10,10,0,0">
+        <Button x:Name="BackBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Content="" Click="BackBtn_Click" BorderThickness="0" Margin="0,58,10,1172" HorizontalAlignment="Right" Width="161">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Icon/Start-03.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="shareBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Click="shareBtn_Click" Height="40" Width="120" VerticalAlignment="Top" BorderThickness="0" HorizontalAlignment="Right" Margin="0,10,10,0">
+        <Button x:Name="shareBtn" Grid.Row="0" Grid.Column="0" Panel.ZIndex="2" Click="shareBtn_Click" BorderThickness="0" Margin="0,10,10,1227" HorizontalAlignment="Right" Width="161">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Icon/Share-03.png"/>
             </Button.Background>

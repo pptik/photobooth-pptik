@@ -22,6 +22,7 @@ namespace Photobooth_PPTIK
         {
             this.path = p;
             this.InitializeComponent();
+            shareBtn.Focus();
 
             var uriSource1 = new Uri(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "photobootbsg.jpg"), UriKind.Relative);
             result.Source = new BitmapImage(uriSource1);

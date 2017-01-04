@@ -213,6 +213,7 @@
     <Content Include="Resources\Frame\frame_9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\logo\bg_form.png" />
     <Resource Include="Resources\Icon\number-10.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -14,8 +14,8 @@
     "height": 0
   },
   "smtp": {
-    "email": "bpg.pptik.itb@gmail.com",
-    "password": "Pptik@123",
+    "email": "",
+    "password": "",
     "emailSubject": "BPG Bandung - Photo Booth PPTIK",
     "msgBody": ""
   } 
