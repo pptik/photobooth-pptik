@@ -229,11 +229,15 @@ namespace Photobooth_PPTIK
             //string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "photoboothbsg_" + n + ext);
           
             string appPath = @"" + Directory.GetCurrentDirectory() + "/images";
+            string appPathFB = @"" + Directory.GetCurrentDirectory() + "/images_fb";
             Directory.CreateDirectory(appPath);
+            Directory.CreateDirectory(appPathFB);
             string path = Path.Combine(appPath, "photobooth_" + n + ext);
+            string pathFB = Path.Combine(appPathFB, "photobooth_" + n + ext);
             Console.WriteLine("Path: "+path);
 
             util.SaveCanvas(this, this.canvas, 96, path);
+            util.SaveCanvas(this, this.canvas, 96, pathFB);
             CaptureBtn.Visibility = Visibility.Visible;
 
             //go to result page
